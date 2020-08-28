@@ -1,0 +1,4 @@
+[submodule "third_part/src/log4go"]
+	path = third_part/src/log4go
+	url = git@github.com:refluxwhw/log4go.git
+	branch = dev
