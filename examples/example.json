@@ -1,0 +1,39 @@
+{
+  "global": {
+    "console_enable": true
+  },
+  "files": {
+    "test": {
+      "filename": "test.log",
+      "rotate": true,
+      "maxsize": "10M",
+      "maxline": "10K",
+      "daily": true
+    }
+  },
+  "layouts": {
+    "simple": "[%T{2006-01-02 15:04:05.000}] %L %C (%S) %M"
+  },
+  "categories": {
+    "Test": {
+      "enable": true,
+      "filters": [
+        {
+          "level": "debug",
+          "layout": "simple",
+          "output": [
+            "console",
+            "test"
+          ]
+        },
+        {
+          "level": "info",
+          "layout": "default",
+          "output": [
+            "console"
+          ]
+        }
+      ]
+    }
+  }
+}

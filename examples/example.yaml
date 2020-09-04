@@ -1,0 +1,50 @@
+# stdout
+global:
+  console_enable: true   #
+
+# write to files
+files:
+  test.err:
+    filename: test_err.log
+    rotate: true
+    maxsize: 10M
+    maxline: 10K
+    daily: true
+
+  test.info:
+    filename: test_info.log
+    rotate: true
+    maxsize: 10M
+    maxline: 10K
+    daily: true
+
+  Test:
+    filename: test_ttt.log
+    rotate: true
+    maxsize: 10M
+    maxline: 10K
+    daily: true
+
+#
+layouts:
+  simple: '[%T] %L %C (%S) %M'
+  error: '[%T] %G %L %C (%S) %M'
+
+#
+categories:
+  TestA: # category name
+    enable: true                    # enable switch
+    filters:
+      - level: INFO                     # log level little than this level will be ignored
+        layout: simple                  # log layout config
+        output: [ console, test.info ]    # log will be output to console and file(test.err)
+      - level: ERROR
+        layout: error
+        output: [ test.err ]
+
+  TestB:
+    enable: true
+    filters:
+      - level: DEBUG
+        layout: error
+        output: [ console, test.info ]
